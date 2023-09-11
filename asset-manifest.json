@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cyberbooks/static/css/main.0deee222.css",
+    "main.js": "/cyberbooks/static/js/main.632d8086.js",
+    "static/js/787.4c0f695e.chunk.js": "/cyberbooks/static/js/787.4c0f695e.chunk.js",
+    "index.html": "/cyberbooks/index.html",
+    "main.0deee222.css.map": "/cyberbooks/static/css/main.0deee222.css.map",
+    "main.632d8086.js.map": "/cyberbooks/static/js/main.632d8086.js.map",
+    "787.4c0f695e.chunk.js.map": "/cyberbooks/static/js/787.4c0f695e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0deee222.css",
+    "static/js/main.632d8086.js"
+  ]
+}
