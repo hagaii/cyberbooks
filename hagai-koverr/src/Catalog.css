@@ -1,0 +1,86 @@
+/* Catalog */
+.book-list {
+    padding: 40px
+  }
+  
+  .book-list ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    gap: 40px;
+  }
+  
+  .book-list li {
+    list-style-type: none;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+    background-color: whitesmoke;
+    box-shadow: 3px 3px 1px #e3e3e3;
+    border-radius: 8px;
+    row-gap: 20px;
+    justify-content: space-between;
+  }
+  
+  .book-list span {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .book-list img {
+    width: 100px; 
+    height: 150px;
+  }
+  
+  .book-list label {
+    font-size: 16px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+
+  .book-list button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .book-list button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Pagination */
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination span {
+    font-size: 16px;
+    margin: 0 10px;
+  }
+  
