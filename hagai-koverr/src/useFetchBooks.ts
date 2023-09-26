@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Book } from "./Types";
 
 const MAX_RESULTS_PER_REQUEST = 25;
@@ -6,6 +6,10 @@ export interface Props {
   debouncedSearchTerm: string;
   currentPage: number;
   matchesPerPage: number;
+}
+
+export interface UseFetchBooks {
+  books: Book[]; totalItems: number;
 }
 async function fetchBooks({debouncedSearchTerm, currentPage, matchesPerPage}: Props) {
   try {
@@ -27,10 +31,10 @@ async function fetchBooks({debouncedSearchTerm, currentPage, matchesPerPage}: Pr
       }
 
       const data = await response.json();
-
-      fetchedBooks = fetchedBooks.concat(data.items);
-      totalItemsFetched += data.items.length;
-
+      if (data?.items){
+        fetchedBooks = fetchedBooks.concat(data.items);
+        totalItemsFetched += data.items.length;
+      }
       if (totalItemsFetched < matchesPerPage) {
         startIndex += MAX_RESULTS_PER_REQUEST;
       }
@@ -42,19 +46,23 @@ async function fetchBooks({debouncedSearchTerm, currentPage, matchesPerPage}: Pr
   }
 }
 
-export default function useFetchBooks() {
+export default function useFetchBooks({debouncedSearchTerm, currentPage, matchesPerPage}: Props): UseFetchBooks {
   const [books, setBooks] = useState<Book[]>([])
   const [totalItems, setTotalItems] = useState(0)
 
-  async function handleFetchBooks ({debouncedSearchTerm, currentPage, matchesPerPage}: Props) {
-    const responseData = await fetchBooks({debouncedSearchTerm, currentPage, matchesPerPage})
-    if (responseData) {
-      setBooks(responseData.fetchedBooks)
-      setTotalItems(responseData.totalItems)
+  useEffect(() => {
+    async function handleFetchBooks() {
+      const responseData = await fetchBooks({debouncedSearchTerm, currentPage, matchesPerPage})
+      if (responseData) {
+        setBooks(responseData.fetchedBooks)
+        setTotalItems(responseData.totalItems)
+      }
     }
-  }
+    console.log('handleFetchBooks')
+    handleFetchBooks();
+  }, [debouncedSearchTerm, currentPage, matchesPerPage])
 
-  return { books, totalItems, handleFetchBooks }
+  return { books, totalItems }
  
 
 }
